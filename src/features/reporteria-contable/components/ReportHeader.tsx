@@ -26,11 +26,9 @@ export function ReportHeader({ lastLoadedAt, metadata, onExportCsv, onPrint }: R
           <span className="report-kicker">CPA · Reportería financiera</span>
           <h1>Reportería contable</h1>
           <p>
-            Frontend profesional solo lectura para Libro Diario, Libro Mayor, Estado de Resultados,
-            Balance General y Flujo de Caja, construido sobre la vista contable consolidada.
+            Plataforma de reporteria contable: Libro Diario, Libro Mayor, Estado de Resultados, Balance General y Flujo de Caja, construido sobre la vista contable consolidada.
           </p>
           <p className="report-hero__meta">Última carga: {formatLoadedAt(lastLoadedAt)}</p>
-          <p className="report-hero__meta">{metadataLine(metadata)}</p>
         </div>
 
         <div className="report-hero__actions">

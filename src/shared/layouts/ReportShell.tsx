@@ -35,14 +35,14 @@ export function ReportShell({ children, session, onLogout }: ReportShellProps) {
         </nav>
 
         <section className="sidebar-session" aria-label="Sesión activa">
-          <span>Sesión interna</span>
+          <span>Sesión actual</span>
           <strong>{session?.userName ?? 'Usuario autorizado'}</strong>
           <small>{session?.userEmail ?? 'Acceso local'}</small>
           <button type="button" onClick={onLogout}>Cerrar sesión</button>
         </section>
 
         <footer className="sidebar__footer">
-          <span>Frontend solo lectura</span>
+          <span>Plataforma de solo lectura</span>
           <strong>Reportes · CPA</strong>
         </footer>
       </aside>
