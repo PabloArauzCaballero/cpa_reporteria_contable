@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "name": "CPA Centro de Preparación Académica",
+    "style": "minimalista, académico, tecnológico, sobrio"
+  },
+  "colors": {
+    "primary": { "name": "Azul institucional profundo", "hex": "#012B65" },
+    "primaryDark": { "name": "Azul noche", "hex": "#00255F" },
+    "primarySoft": { "name": "Azul medio", "hex": "#0E3E74" },
+    "secondary": { "name": "Celeste CPA", "hex": "#20A0C5" },
+    "secondaryDark": { "name": "Celeste profundo", "hex": "#1A7BA6" },
+    "accent": { "name": "Azul luminoso", "hex": "#195687" },
+    "neutralLight": { "name": "Gris claro", "hex": "#DEDFE1" },
+    "neutralMuted": { "name": "Gris azulado", "hex": "#9AA9BB" },
+    "white": { "name": "Blanco", "hex": "#FFFFFF" }
+  },
+  "semantic": {
+    "background": "#012B65",
+    "surface": "#0E3E74",
+    "surfaceSoft": "#F5F8FA",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#DEDFE1",
+    "textMuted": "#9AA9BB",
+    "buttonPrimary": "#20A0C5",
+    "buttonPrimaryHover": "#1A7BA6",
+    "border": "#195687",
+    "link": "#20A0C5"
+  },
+  "gradients": {
+    "hero": "linear-gradient(135deg, #00255F 0%, #012B65 45%, #20A0C5 100%)",
+    "cardDark": "linear-gradient(180deg, #0E3E74 0%, #012B65 100%)",
+    "accentGlow": "radial-gradient(circle, rgba(32,160,197,0.35) 0%, rgba(1,43,101,0) 70%)"
+  },
+  "ui": {
+    "borderRadius": { "sm": "6px", "md": "12px", "lg": "20px" },
+    "shadow": {
+      "soft": "0 8px 24px rgba(0, 37, 95, 0.18)",
+      "strong": "0 16px 40px rgba(0, 37, 95, 0.28)"
+    }
+  }
+}
