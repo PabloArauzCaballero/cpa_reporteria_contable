@@ -68,3 +68,12 @@
 @media (max-width: 620px) {
   .advanced-filters__grid--wide { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 920px) {
+  .reporting-home__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .reporting-home__hero,
+  .reporting-card { padding: 22px; border-radius: 24px; }
+}

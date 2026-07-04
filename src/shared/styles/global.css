@@ -2,6 +2,7 @@
 @import './sections/base.css';
 @import './sections/shell.css';
 @import './sections/auth.css';
+@import './sections/reporting-home.css';
 @import './sections/report-controls.css';
 @import './sections/report-advanced-filters.css';
 @import './sections/report-tables.css';

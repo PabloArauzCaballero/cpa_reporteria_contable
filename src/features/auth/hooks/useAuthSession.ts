@@ -25,6 +25,7 @@ export function useAuthSession() {
         token: authenticatedUser.token,
         userEmail: authenticatedUser.userEmail,
         userName: authenticatedUser.userName,
+        permissions: authenticatedUser.permissions,
         createdAt: new Date().toISOString(),
       };
       storeSession(nextSession);

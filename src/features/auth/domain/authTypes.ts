@@ -7,4 +7,5 @@ export interface AuthenticatedUser {
   token: string;
   userName: string;
   userEmail: string;
+  permissions: string[];
 }

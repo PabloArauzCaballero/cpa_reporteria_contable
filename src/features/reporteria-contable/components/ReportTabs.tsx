@@ -1,22 +1,18 @@
+import { ACCOUNTING_REPORT_PERMISSIONS } from '../../reporteria/domain/reportPermissions';
 import type { ReportTab } from '../domain/types';
-
-const tabs: Array<{ id: ReportTab; label: string }> = [
-  { id: 'diario', label: 'Libro diario' },
-  { id: 'mayor', label: 'Libro mayor' },
-  { id: 'resultados', label: 'Estado de resultados' },
-  { id: 'balance', label: 'Balance general' },
-  { id: 'flujo', label: 'Flujo de caja' },
-];
 
 interface ReportTabsProps {
   activeTab: ReportTab;
+  allowedTabs: ReportTab[];
   onChange: (tab: ReportTab) => void;
 }
 
-export function ReportTabs({ activeTab, onChange }: ReportTabsProps) {
+export function ReportTabs({ activeTab, allowedTabs, onChange }: ReportTabsProps) {
+  const visibleTabs = ACCOUNTING_REPORT_PERMISSIONS.filter((tab) => allowedTabs.includes(tab.id));
+
   return (
     <div className="panel tabs" role="tablist" aria-label="Reportes contables">
-      {tabs.map((tab) => (
+      {visibleTabs.map((tab) => (
         <button
           key={tab.id}
           type="button"

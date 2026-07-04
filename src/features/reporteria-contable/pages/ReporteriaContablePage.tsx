@@ -1,13 +1,32 @@
+import { PageState } from '../../../shared/components/PageState';
 import { ReportContent } from '../components/ReportContent';
 import { ReportDiagnosticsDrawer } from '../components/ReportDiagnosticsDrawer';
 import { ReportHeader } from '../components/ReportHeader';
 import { ReportTabs } from '../components/ReportTabs';
 import { ReportToolbar } from '../components/ReportToolbar';
 import { downloadReportCsv } from '../domain/exportCsv';
+import type { ReportTab } from '../domain/types';
 import { useReporteriaContableViewModel } from '../hooks/useReporteriaContableViewModel';
 
-export function ReporteriaContablePage() {
-  const viewModel = useReporteriaContableViewModel();
+interface ReporteriaContablePageProps {
+  allowedTabs: ReportTab[];
+}
+
+export function ReporteriaContablePage({ allowedTabs }: ReporteriaContablePageProps) {
+  if (allowedTabs.length === 0) {
+    return (
+      <PageState
+        title="No tienes reportes contables habilitados"
+        message="Solicita a un administrador que habilite los reportes que necesitas consultar."
+      />
+    );
+  }
+
+  return <ReporteriaContableContent allowedTabs={allowedTabs} />;
+}
+
+function ReporteriaContableContent({ allowedTabs }: ReporteriaContablePageProps) {
+  const viewModel = useReporteriaContableViewModel(allowedTabs);
 
   return (
     <div className="report-page">
@@ -41,7 +60,7 @@ export function ReporteriaContablePage() {
 
       <ReportDiagnosticsDrawer diagnostics={viewModel.diagnostics} />
 
-      <ReportTabs activeTab={viewModel.activeTab} onChange={viewModel.setActiveTab} />
+      <ReportTabs activeTab={viewModel.activeTab} allowedTabs={allowedTabs} onChange={viewModel.setActiveTab} />
 
       <ReportContent
         activeTab={viewModel.activeTab}

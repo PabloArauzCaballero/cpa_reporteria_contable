@@ -2,6 +2,7 @@ export interface AuthSession {
   token: string;
   userName: string;
   userEmail: string;
+  permissions: string[];
   createdAt: string;
 }
 
@@ -13,6 +14,14 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function normalizeText(value: unknown): string {
   return String(value ?? '').trim();
+}
+
+function normalizeStringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+
+  return value
+    .map((item) => normalizeText(item))
+    .filter(Boolean);
 }
 
 export function readStoredSession(): AuthSession | null {
@@ -27,9 +36,16 @@ export function readStoredSession(): AuthSession | null {
     const userName = normalizeText(parsed.userName);
     const userEmail = normalizeText(parsed.userEmail);
     const createdAt = normalizeText(parsed.createdAt);
+    const permissions = normalizeStringList(parsed.permissions);
 
     if (!token || !userEmail) return null;
-    return { token, userName: userName || userEmail, userEmail, createdAt: createdAt || new Date().toISOString() };
+    return {
+      token,
+      userName: userName || userEmail,
+      userEmail,
+      permissions,
+      createdAt: createdAt || new Date().toISOString(),
+    };
   } catch {
     return null;
   }

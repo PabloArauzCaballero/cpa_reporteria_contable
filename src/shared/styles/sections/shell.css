@@ -150,3 +150,12 @@
   border-color: rgba(32, 160, 197, 0.58);
   background: rgba(32, 160, 197, 0.18);
 }
+
+button.sidebar__link {
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  background: transparent;
+}

@@ -1,13 +1,19 @@
 import type { ReactNode } from 'react';
 import type { AuthSession } from '../auth/session';
 
+export type ReportShellView = 'panel' | 'contabilidad';
+
 interface ReportShellProps {
   children: ReactNode;
+  activeView: ReportShellView;
   session: AuthSession | null;
+  canOpenContabilidad: boolean;
   onLogout: () => void;
+  onOpenPanel: () => void;
+  onOpenContabilidad: () => void;
 }
 
-export function ReportShell({ children, session, onLogout }: ReportShellProps) {
+export function ReportShell(props: ReportShellProps) {
   return (
     <div className="shell">
       <aside className="sidebar" aria-label="Navegación principal">
@@ -20,25 +26,32 @@ export function ReportShell({ children, session, onLogout }: ReportShellProps) {
         </div>
 
         <nav className="sidebar__nav">
-          <a className="sidebar__link sidebar__link--active" href="#reporteria-contable">
+          <button
+            className={props.activeView === 'panel' ? 'sidebar__link sidebar__link--active' : 'sidebar__link'}
+            type="button"
+            onClick={props.onOpenPanel}
+          >
             <span>▦</span>
-            Reportería contable
-          </a>
-          <a className="sidebar__link" href="#libro-diario">
-            <span>◷</span>
-            Libro diario
-          </a>
-          <a className="sidebar__link" href="#eeff">
-            <span>◫</span>
-            Estados financieros
-          </a>
+            Panel de reportería
+          </button>
+
+          {props.canOpenContabilidad ? (
+            <button
+              className={props.activeView === 'contabilidad' ? 'sidebar__link sidebar__link--active' : 'sidebar__link'}
+              type="button"
+              onClick={props.onOpenContabilidad}
+            >
+              <span>◫</span>
+              Contabilidad
+            </button>
+          ) : null}
         </nav>
 
         <section className="sidebar-session" aria-label="Sesión activa">
           <span>Sesión interna</span>
-          <strong>{session?.userName ?? 'Usuario autorizado'}</strong>
-          <small>{session?.userEmail ?? 'Acceso autorizado'}</small>
-          <button type="button" onClick={onLogout}>Cerrar sesión</button>
+          <strong>{props.session?.userName ?? 'Usuario autorizado'}</strong>
+          <small>{props.session?.userEmail ?? 'Acceso autorizado'}</small>
+          <button type="button" onClick={props.onLogout}>Cerrar sesión</button>
         </section>
 
         <footer className="sidebar__footer">
@@ -47,7 +60,7 @@ export function ReportShell({ children, session, onLogout }: ReportShellProps) {
         </footer>
       </aside>
 
-      <main className="content">{children}</main>
+      <main className="content">{props.children}</main>
     </div>
   );
 }
