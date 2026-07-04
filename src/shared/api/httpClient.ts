@@ -40,10 +40,10 @@ function resolveErrorMessage(payload: unknown, status: number): string {
   const payloadMessage = readPayloadMessage(payload);
   if (payloadMessage) return payloadMessage;
   if (status === 400) return 'La solicitud no pudo procesarse. Revisa los datos enviados.';
-  if (status === 401) return 'No autorizado. Revisa credenciales, endpoint de login o token de sesión.';
+  if (status === 401) return 'No se pudo iniciar sesión. Revisa tus credenciales o solicita verificación de acceso.';
   if (status === 403) return 'No tienes permisos para consultar esta reportería.';
   if (status === 404) return 'El servicio solicitado no está disponible.';
-  if (status >= 500) return 'El backend no pudo procesar la solicitud.';
+  if (status >= 500) return 'El servicio no pudo procesar la solicitud en este momento.';
   return `No se pudo completar la consulta. Código ${status}.`;
 }
 

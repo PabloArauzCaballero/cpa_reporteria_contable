@@ -28,7 +28,7 @@ export function buildNoDataDiagnostic(totalMovements: number, activeTab: ReportT
   return {
     id: 'data-empty',
     title: 'Sin movimientos',
-    message: `No se encontraron movimientos ${resolveVisibleScopeLabel(activeTab)}. Revisa fechas, búsqueda o conexión API.`,
+    message: `No se encontraron movimientos ${resolveVisibleScopeLabel(activeTab)}. Revisa fechas, búsqueda o conexión del servicio.`,
     severity: 'warning',
     value: '0',
   };
@@ -101,36 +101,36 @@ export function buildCashFlowDiagnostic(flujoCaja: FlujoCajaResumen): ReportDiag
     return {
       id: 'cash-config-missing',
       title: 'Cuenta de efectivo pendiente',
-      message: 'El endpoint debe devolver metadata.cuentaEfectivo o metadata.cuentasEfectivo.',
+      message: 'Se debe definir al menos una cuenta oficial de efectivo para preparar el Flujo de Caja.',
       severity: 'warning',
-      value: 'Metadata',
+      value: 'Pendiente',
     };
   }
 
   return {
-    id: 'cash-config-metadata',
-    title: 'Efectivo desde metadata',
-    message: 'El flujo de caja usa la cuenta de efectivo devuelta por el endpoint especializado.',
+    id: 'cash-config-source',
+    title: 'Efectivo oficial',
+    message: 'El Flujo de Caja usa las cuentas de efectivo definidas para la reportería contable.',
     severity: 'ok',
     value: flujoCaja.cashAccountCodes.join(', '),
   };
 }
 
-export function buildMetadataDiagnostic(metadata: ReporteriaContableMetadata | null): ReportDiagnostic {
+export function buildAccountingSourceDiagnostic(metadata: ReporteriaContableMetadata | null): ReportDiagnostic {
   if (metadata) {
     return {
-      id: 'metadata-ok',
-      title: 'Metadata del endpoint',
-      message: `Origen: ${metadata.origen}. Moneda: ${metadata.moneda}.`,
+      id: 'accounting-source-ok',
+      title: 'Información contable',
+      message: `Datos preparados para el corte seleccionado. Moneda: ${metadata.moneda}.`,
       severity: 'ok',
       value: metadata.moneda,
     };
   }
 
   return {
-    id: 'metadata-missing',
-    title: 'Metadata pendiente',
-    message: 'La respuesta debe incluir metadata de origen, fechas, moneda y cuenta de efectivo.',
+    id: 'accounting-source-missing',
+    title: 'Información pendiente',
+    message: 'Todavía no se recibió la información contable necesaria para preparar los reportes.',
     severity: 'warning',
     value: 'Pendiente',
   };

@@ -108,8 +108,8 @@ export function LibroDiarioTab({ transacciones }: LibroDiarioTabProps) {
   return (
     <div id="libro-diario" className="libro-diario-tree">
       <LibroDiarioPager page={page} pageSize={pageSize} totalPages={totalPages} totalRecords={transacciones.length} onPageChange={setPage} onPageSizeChange={setPageSize} />
-      {visibleTransactions.map((transaction, index) => (
-        <LibroDiarioTransaction transaction={transaction} defaultOpen={index === 0} key={transaction.idTransaccion} />
+      {visibleTransactions.map((transaction) => (
+        <LibroDiarioTransaction transaction={transaction} defaultOpen key={transaction.idTransaccion} />
       ))}
       <LibroDiarioPager page={page} pageSize={pageSize} totalPages={totalPages} totalRecords={transacciones.length} onPageChange={setPage} onPageSizeChange={setPageSize} />
     </div>

@@ -40,8 +40,7 @@ export function AdvancedFilterPanel({ filters, options, onFilterChange }: Advanc
       </summary>
       <div className="advanced-filters__header">
         <p>
-          Estos filtros se aplican sobre los movimientos ya cargados desde la view. No consultan módulos CRUD ni
-          servicios administrativos.
+          Estos filtros se aplican sobre los movimientos contables cargados para el periodo seleccionado.
         </p>
         <button type="button" className="ghost-button" onClick={() => clearAdvancedFilters(onFilterChange)}>
           Limpiar filtros avanzados
@@ -52,7 +51,7 @@ export function AdvancedFilterPanel({ filters, options, onFilterChange }: Advanc
         <FilterSelect label="Mes" name="mes" value={filters.mes} options={options.meses} onFilterChange={onFilterChange} />
         <FilterSelect label="Tipo transacción" name="tipoTransaccion" value={filters.tipoTransaccion} options={options.tiposTransaccion} onFilterChange={onFilterChange} />
         <FilterSelect label="Subtipo transacción" name="subTipoTransaccion" value={filters.subTipoTransaccion} options={options.subTiposTransaccion} onFilterChange={onFilterChange} />
-        <FilterSelect label="Tipo reporte" name="tipoReporte" value={filters.tipoReporte} options={options.tiposReporte} onFilterChange={onFilterChange} />
+        <FilterSelect label="Tipo de reporte" name="tipoReporte" value={filters.tipoReporte} options={options.tiposReporte} onFilterChange={onFilterChange} />
         <FilterSelect label="Clasificación" name="subTipo" value={filters.subTipo} options={[
           { value: 'ACTIVO', label: 'Activo' },
           { value: 'PASIVO', label: 'Pasivo' },
@@ -63,10 +62,10 @@ export function AdvancedFilterPanel({ filters, options, onFilterChange }: Advanc
         ]} onFilterChange={onFilterChange} />
         <FilterSelect label="Código cuenta" name="codigoCuenta" value={filters.codigoCuenta} options={options.cuentas} onFilterChange={onFilterChange} />
         <FilterSelect label="Nombre cuenta" name="nombreCuenta" value={filters.nombreCuenta} options={options.nombresCuenta} onFilterChange={onFilterChange} />
-        <FilterSelect label="ID cuenta" name="idCuenta" value={filters.idCuenta} options={options.idsCuenta} onFilterChange={onFilterChange} />
+        <FilterSelect label="Código interno de cuenta" name="idCuenta" value={filters.idCuenta} options={options.idsCuenta} onFilterChange={onFilterChange} />
         <FilterSelect label="Código grupo" name="codigoGrupoCuenta" value={filters.codigoGrupoCuenta} options={options.gruposCuenta} onFilterChange={onFilterChange} />
         <FilterSelect label="Nombre grupo" name="nombreGrupoCuenta" value={filters.nombreGrupoCuenta} options={options.nombresGrupoCuenta} onFilterChange={onFilterChange} />
-        <FilterSelect label="ID grupo" name="idGrupoCuenta" value={filters.idGrupoCuenta} options={options.idsGrupoCuenta} onFilterChange={onFilterChange} />
+        <FilterSelect label="Código interno de grupo" name="idGrupoCuenta" value={filters.idGrupoCuenta} options={options.idsGrupoCuenta} onFilterChange={onFilterChange} />
         <FilterSelect label="Subgrupo" name="subGrupo" value={filters.subGrupo} options={options.subGrupos} onFilterChange={onFilterChange} />
         <FilterSelect label="Naturaleza" name="naturalezaSaldo" value={filters.naturalezaSaldo} options={options.naturalezasSaldo} onFilterChange={onFilterChange} />
         <FilterSelect label="Transacción" name="idTransaccion" value={filters.idTransaccion} options={options.transacciones} onFilterChange={onFilterChange} />

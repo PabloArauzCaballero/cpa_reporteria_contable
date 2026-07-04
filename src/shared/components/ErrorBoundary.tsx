@@ -17,7 +17,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(_error: Error, _errorInfo: ErrorInfo): void {
-    // Punto único de captura. Se deja listo para conectar Sentry/observabilidad sin ensuciar componentes visuales.
   }
 
   render(): ReactNode {
@@ -25,7 +24,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       return (
         <PageState
           title="No se pudo cargar la reportería"
-          message="Ocurrió un problema inesperado en la interfaz. Recarga la página para intentarlo nuevamente."
+          message="Ocurrió un problema inesperado. Recarga la página para intentarlo nuevamente."
         />
       );
     }

@@ -1,0 +1,158 @@
+@media print {
+  .account-tree,
+  .account-group-tree {
+    display: block !important;
+  }
+
+  .account-tree__group,
+  .account-major-group {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0 0 2mm !important;
+  }
+
+  .account-tree__summary,
+  .account-major-group > summary,
+  .transaction-card__header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: baseline !important;
+    gap: 6mm !important;
+    padding: 1.3mm 0 !important;
+    color: #111 !important;
+    list-style: none !important;
+    border: 0 !important;
+  }
+
+  .account-tree__summary::after,
+  .account-major-group > summary::after,
+  .transaction-card > summary::after {
+    display: none !important;
+  }
+
+  .account-tree__summary strong,
+  .account-major-group > summary strong,
+  .transaction-card__header strong {
+    color: #111 !important;
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+  }
+
+  .account-tree__summary small,
+  .account-major-group > summary small,
+  .transaction-card__header span,
+  .muted {
+    color: #444 !important;
+    font-size: 8.7pt !important;
+  }
+
+  .account-tree__summary b,
+  .account-major-group > summary b,
+  .transaction-card__totals b {
+    color: #111 !important;
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    font-variant-numeric: tabular-nums;
+    text-align: right !important;
+  }
+
+  .account-tree__children,
+  .account-major-group > .account-grid {
+    padding: 0 0 0 7mm !important;
+    margin: 0 !important;
+    border-left: 1px solid #d6d6d6 !important;
+  }
+
+  .account-tree__children .account-tree__children {
+    padding-left: 6mm !important;
+  }
+
+  .statement-line {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 6mm !important;
+    padding: 1.4mm 0 !important;
+    border-bottom: 1px dotted #c8c8c8 !important;
+    color: #111 !important;
+  }
+
+  .statement-line > span:first-child {
+    color: #111 !important;
+  }
+
+  .statement-line > span:last-child,
+  .statement-line > strong,
+  .statement-line > b,
+  .number {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .statement-total {
+    margin-top: 2mm !important;
+    padding-top: 2mm !important;
+    border-top: 1px solid #111 !important;
+    border-bottom: 0 !important;
+    font-weight: 700 !important;
+  }
+
+  .badge {
+    border: 1px solid #999 !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .transaction-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0 0 5mm !important;
+  }
+
+  .transaction-card__header {
+    border-bottom: 1px solid #111 !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .transaction-card__totals {
+    justify-self: end !important;
+  }
+
+  .transaction-card__totals .badge {
+    display: none !important;
+  }
+
+  .table-wrap {
+    overflow: visible !important;
+  }
+
+  table {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-collapse: collapse !important;
+    font-size: 8.6pt !important;
+  }
+
+  th,
+  td {
+    padding: 1.6mm 1.2mm !important;
+    border-bottom: 1px dotted #c8c8c8 !important;
+    color: #111 !important;
+  }
+
+  th {
+    background: #fff !important;
+    border-bottom: 1px solid #111 !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+  }
+
+  .total-row td,
+  .strong-row td,
+  .group-row td {
+    background: #fff !important;
+    border-top: 1px solid #111 !important;
+    font-weight: 700 !important;
+  }
+}

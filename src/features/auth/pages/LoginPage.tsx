@@ -15,8 +15,7 @@ export function LoginPage({ isSubmitting, error, onLogin }: LoginPageProps) {
           <p className="report-kicker">CPA · Plataforma interna</p>
           <h2>Reportería contable protegida y lista para dirección.</h2>
           <p>
-            Este frontend es de solo lectura. Después del login consume un único servicio especializado
-            conectado a la vista contable oficial.
+            Consulta segura y de solo lectura para revisar libros contables, estados financieros y Flujo de Caja.
           </p>
           <div className="login-page__badges">
             <span>Libro Diario</span>

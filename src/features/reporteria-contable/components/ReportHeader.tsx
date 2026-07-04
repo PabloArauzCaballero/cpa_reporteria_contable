@@ -14,8 +14,8 @@ function formatLoadedAt(value: string | null): string {
 }
 
 function metadataLine(metadata: ReporteriaContableMetadata | null): string {
-  if (!metadata) return 'Origen pendiente de metadata del endpoint especializado.';
-  return `${metadata.origen} · ${metadata.moneda} · corte ${formatDate(metadata.fechaCorte)}`;
+  if (!metadata) return 'Información contable pendiente de carga.';
+  return `Moneda ${metadata.moneda} · corte ${formatDate(metadata.fechaCorte)}`;
 }
 
 export function ReportHeader({ lastLoadedAt, metadata, onExportCsv, onPrint }: ReportHeaderProps) {
@@ -26,13 +26,14 @@ export function ReportHeader({ lastLoadedAt, metadata, onExportCsv, onPrint }: R
           <span className="report-kicker">CPA · Reportería financiera</span>
           <h1>Reportería contable</h1>
           <p>
-            Plataforma de reporteria contable: Libro Diario, Libro Mayor, Estado de Resultados, Balance General y Flujo de Caja, construido sobre la vista contable consolidada.
+            Consulta solo lectura para Libro Diario, Libro Mayor, Estado de Resultados, Balance General y Flujo de Caja.
           </p>
           <p className="report-hero__meta">Última carga: {formatLoadedAt(lastLoadedAt)}</p>
+          <p className="report-hero__meta">{metadataLine(metadata)}</p>
         </div>
 
         <div className="report-hero__actions">
-          <span className="badge badge--success">Endpoint view</span>
+          <span className="badge badge--success">Solo lectura</span>
           <button type="button" className="button button--ghost" onClick={onExportCsv}>
             Exportar reporte
           </button>

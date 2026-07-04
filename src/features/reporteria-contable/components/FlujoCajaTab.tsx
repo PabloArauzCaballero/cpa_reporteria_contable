@@ -35,11 +35,9 @@ export function FlujoCajaTab({ resumen }: FlujoCajaTabProps) {
   if (resumen.requiereConfiguracion) {
     return (
       <div className="notice">
-        <strong>Metadata de cuenta de efectivo pendiente.</strong>
+        <strong>Cuenta de efectivo pendiente.</strong>
         <p>
-          El endpoint especializado debe devolver <code>metadata.cuentaEfectivo</code> o{' '}
-          <code>metadata.cuentasEfectivo</code>. Sin esa metadata, el frontend no calcula Flujo de Caja
-          para evitar resultados inventados.
+          Se debe definir al menos una cuenta de efectivo oficial. Sin esa información, el Flujo de Caja no se prepara para evitar resultados incorrectos.
         </p>
       </div>
     );
@@ -64,7 +62,7 @@ export function FlujoCajaTab({ resumen }: FlujoCajaTabProps) {
             <strong>{formatMoney(resumen.saldoFinal)}</strong>
           </div>
           <p className="muted">
-            Cuentas de efectivo oficiales: {resumen.cashAccountCodes.join(', ')}.
+            Cuentas de efectivo consideradas: {resumen.cashAccountCodes.join(', ')}.
           </p>
         </FinancialStatementCard>
 

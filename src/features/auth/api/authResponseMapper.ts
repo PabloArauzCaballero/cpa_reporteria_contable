@@ -30,7 +30,7 @@ export function mapLoginResponse(response: unknown, fallbackEmail: string): Auth
     || text(root.accessToken);
 
   if (!token) {
-    throw new Error('El login no devolvió un token de sesión válido.');
+    throw new Error('No se pudo confirmar el acceso. Solicita verificación de tu usuario.');
   }
 
   const email = text(profile.email) || text(profile.correo) || fallbackEmail;

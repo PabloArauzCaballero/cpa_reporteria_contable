@@ -1,0 +1,86 @@
+/* Ajuste final: indicadores desplegables a la derecha y encabezados alineados. */
+.diagnostic-drawer > summary,
+.advanced-filters > summary,
+.account-tree__summary,
+.account-major-group > summary,
+.transaction-card > summary {
+  justify-content: stretch;
+}
+
+.diagnostic-drawer > summary::before,
+.advanced-filters > summary::before,
+.account-tree__summary::before,
+.account-major-group > summary::before,
+.transaction-card > summary::before {
+  content: none !important;
+}
+
+.diagnostic-drawer > summary::after,
+.advanced-filters > summary::after,
+.account-tree__summary::after,
+.account-major-group > summary::after,
+.transaction-card > summary::after {
+  content: '▸';
+  color: var(--color-secondary);
+  transition: transform 160ms ease;
+  justify-self: end;
+  align-self: center;
+  font-size: 0.9rem;
+}
+
+.diagnostic-drawer[open] > summary::after,
+.advanced-filters[open] > summary::after,
+.account-tree__group[open] > .account-tree__summary::after,
+.account-major-group[open] > summary::after,
+.transaction-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.diagnostic-drawer > summary,
+.advanced-filters > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 22px;
+  align-items: center;
+}
+
+.account-tree__summary,
+.account-major-group > summary,
+.transaction-card__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 22px;
+  align-items: center;
+}
+
+.account-tree__summary > span,
+.account-major-group > summary > span,
+.transaction-card__header > div:first-child,
+.diagnostic-drawer > summary > span,
+.advanced-filters > summary > span {
+  min-width: 0;
+  text-align: left;
+  justify-self: stretch;
+}
+
+.account-tree__summary strong,
+.account-major-group > summary strong {
+  text-align: left;
+}
+
+.account-tree__summary b,
+.account-major-group > summary b,
+.transaction-card__totals,
+.diagnostic-drawer > summary b {
+  justify-self: end;
+}
+
+.transaction-card__totals {
+  text-align: right;
+}
+
+.section-heading {
+  align-items: center;
+}
+
+.section-heading > div {
+  min-width: 0;
+}

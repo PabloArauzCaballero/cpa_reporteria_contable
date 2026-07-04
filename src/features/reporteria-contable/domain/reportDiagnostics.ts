@@ -10,7 +10,7 @@ import type {
 import {
   buildBalanceDiagnostic,
   buildCashFlowDiagnostic,
-  buildMetadataDiagnostic,
+  buildAccountingSourceDiagnostic,
   buildNoDataDiagnostic,
   buildTransactionBalanceDiagnostic,
   buildUnclassifiedDiagnostic,
@@ -23,16 +23,6 @@ interface DiagnosticsInput {
   balanceGeneral: BalanceGeneralResumen;
   flujoCaja: FlujoCajaResumen;
   metadata: ReporteriaContableMetadata | null;
-}
-
-function buildDataSourceDiagnostic(): ReportDiagnostic {
-  return {
-    id: 'source-api',
-    title: 'Fuente endpoint view',
-    message: 'La pantalla consume únicamente el endpoint especializado conectado a la view contable.',
-    severity: 'ok',
-    value: 'API',
-  };
 }
 
 function shouldShowTransactionDiagnostic(activeTab: ReportTab): boolean {
@@ -52,8 +42,7 @@ export function buildReportDiagnostics(input: DiagnosticsInput): ReportDiagnosti
     buildBalanceDiagnostic(input.balanceGeneral),
     buildUnclassifiedDiagnostic(input.movimientosVisibles),
     buildCashFlowDiagnostic(input.flujoCaja),
-    buildMetadataDiagnostic(input.metadata),
-    buildDataSourceDiagnostic(),
+    buildAccountingSourceDiagnostic(input.metadata),
   );
 
   return diagnostics;

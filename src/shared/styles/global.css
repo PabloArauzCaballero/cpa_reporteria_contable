@@ -5,5 +5,7 @@
 @import './sections/report-controls.css';
 @import './sections/report-advanced-filters.css';
 @import './sections/report-tables.css';
+@import './sections/report-toggles.css';
 @import './sections/responsive.css';
 @import './sections/print.css';
+@import './sections/print-cascade.css';
