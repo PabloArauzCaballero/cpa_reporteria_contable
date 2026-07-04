@@ -8,22 +8,25 @@
     "dev": "vite --host 0.0.0.0 --port 4173",
     "dev:local": "vite --host 127.0.0.1 --port 4173",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 4174",
+    "preview": "yarn run build && wrangler dev",
     "typecheck": "tsc --noEmit",
     "quality": "node scripts/audit-quality.mjs && node scripts/architecture-check.mjs && tsc --noEmit && vite build",
     "ci:frontend": "yarn quality",
     "architecture:check": "node scripts/architecture-check.mjs",
-    "audit:quality": "node scripts/audit-quality.mjs"
+    "audit:quality": "node scripts/audit-quality.mjs",
+    "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
     "react": "19.2.7",
     "react-dom": "19.2.7"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.43.0",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "typescript": "6.0.3",
-    "vite": "8.1.3"
+    "vite": "8.1.3",
+    "wrangler": "^4.107.0"
   }
 }
